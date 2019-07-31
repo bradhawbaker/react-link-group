@@ -1,27 +1,6 @@
 import React, { Component } from "react";
 import LinkGroup from "../../src/LinkGroup";
-
-let links = [
-  {
-    id: "_CLEAR_",
-    displayName: "All"
-  },
-  {
-    id: "services",
-    displayName: "Services",
-    value: 6
-  },
-  {
-    id: "operations",
-    displayName: "Operations",
-    value: 9
-  },
-  {
-    id: "resources",
-    displayName: "Resources",
-    value: 2
-  }
-];
+import LINKS_CONFIG from "./config";
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <LinkGroup links={links} selectionCallback={this.selected} />
+        <LinkGroup links={LINKS_CONFIG} selectionCallback={this.selected} />
         <hr />
         <p>The selected link id is: {this.state.selected}</p>
       </div>
