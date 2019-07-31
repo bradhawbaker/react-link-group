@@ -1,0 +1,12 @@
+.react-link {
+    text-decoration: underline;
+    margin: 0px 10px;
+    color: blue;
+    cursor: pointer;
+}
+
+.react-link.selected {
+    text-decoration: none;
+    color: black;
+    cursor: default;
+}
