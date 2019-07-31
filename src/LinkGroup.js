@@ -14,11 +14,15 @@ class LinkGroup extends Component {
   }
 
   linkSelection(id) {
+    let { selectionCallback } = this.props;
+
     this.setState({
       selected: id
     });
 
-    this.props.selectionCallback(id);
+    if (selectionCallback) {
+      selectionCallback(id);
+    }
   }
 
   render() {

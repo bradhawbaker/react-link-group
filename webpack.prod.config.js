@@ -9,13 +9,13 @@ module.exports = merge(core, {
   mode: "production",
   devtool: "source-map",
   entry: {
-    "catalog-zero": "./index.js"
+    "react-link-group": "./index.js"
   },
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "/",
-    library: "catalogZero",
+    library: "reactLinkGroup",
     libraryTarget: "umd"
   },
   externals: ["prop-types", "react", "react-dom"],
@@ -24,9 +24,8 @@ module.exports = merge(core, {
       {
         test: /\.(css|sass|scss)$/,
         use: [
-          "style-loader", //3. Inject styles into DOM
-          "css-loader", //2. Turns css into commonjs
-          "sass-loader" //1. Turns sass into css
+          "style-loader", //2. Inject styles into DOM
+          "css-loader" //1. Turns css into commonjs
         ]
       }
     ]

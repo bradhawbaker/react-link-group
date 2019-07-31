@@ -1,23 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class Link extends Component {
-  render() {
-    let { id, displayName, value, selected, selectionCallback } = this.props;
-    let extraData = "";
-    let linkClass = selected ? "react-link selected" : "react-link";
+const Link = props => {
+  let { id, displayName, value, selected, selectionCallback } = props;
+  let extraData = "";
+  let linkClass = selected ? "react-link selected" : "react-link";
 
-    if (value) {
-      extraData = `(${value})`;
-    }
-
-    return (
-      <span className={linkClass} onClick={() => selectionCallback(id)}>
-        {displayName} {extraData}
-      </span>
-    );
+  if (value) {
+    extraData = ` (${value})`;
   }
-}
+
+  return (
+    <span className={linkClass} onClick={() => selectionCallback(id)}>
+      {displayName}
+      {extraData}
+    </span>
+  );
+};
 
 export default Link;
 
