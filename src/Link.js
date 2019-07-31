@@ -2,14 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class Link extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selected: props.selected
-    };
-  }
-
   render() {
     let { id, displayName, value, selected, selectionCallback } = this.props;
     let extraData = "";
