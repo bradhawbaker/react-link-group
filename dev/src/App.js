@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LinkGroup from "../../src/LinkGroup";
 import LINKS_CONFIG from "./config";
+import "./styles.css";
 
 class App extends Component {
   constructor(props) {
