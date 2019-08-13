@@ -23,7 +23,6 @@ class App extends Component {
     return (
       <div>
         <LinkGroup links={LINKS_CONFIG} selectionCallback={this.selected} />
-        <hr />
         <p>The selected link id is: {this.state.selected}</p>
       </div>
     );
