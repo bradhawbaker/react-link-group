@@ -19,17 +19,6 @@ module.exports = merge(core, {
     libraryTarget: "umd"
   },
   externals: ["prop-types", "react", "react-dom"],
-  module: {
-    rules: [
-      {
-        test: /\.(css|sass|scss)$/,
-        use: [
-          "style-loader", //2. Inject styles into DOM
-          "css-loader" //1. Turns css into commonjs
-        ]
-      }
-    ]
-  },
   plugins: [new CleanWebpackPlugin()],
   optimization: {
     minimizer: [

@@ -38,7 +38,7 @@ class LinkGroup extends Component {
         />
       );
     });
-    return linkList;
+    return <div className="react-link-group">${linkList}</div>;
   }
 }
 
