@@ -11,10 +11,10 @@ const Link = props => {
   }
 
   return (
-    <span className={linkClass} onClick={() => selectionCallback(id)}>
+    <li className={linkClass} onClick={() => selectionCallback(id)}>
       {displayName}
       {extraData}
-    </span>
+    </li>
   );
 };
 
@@ -26,4 +26,8 @@ Link.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   selected: PropTypes.bool,
   selectionCallback: PropTypes.func.isRequired
+};
+
+Link.defaultPrps = {
+  selected: false
 };
