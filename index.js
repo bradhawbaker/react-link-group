@@ -1,3 +1,3 @@
-import Button from "./src/Button";
+import LinkGroup from "./src/LinkGroup";
 
-export default Button;
+export default LinkGroup;
