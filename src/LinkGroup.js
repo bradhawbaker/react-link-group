@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Link from "./Link";
-import "../dev/src/styles.css";
 
 class LinkGroup extends Component {
   constructor(props) {
@@ -15,12 +14,13 @@ class LinkGroup extends Component {
 
   linkSelection(id) {
     let { selectionCallback } = this.props;
+    let { selected } = this.state;
 
     this.setState({
       selected: id
     });
 
-    if (selectionCallback) {
+    if (selectionCallback && selected !== id) {
       selectionCallback(id);
     }
   }
