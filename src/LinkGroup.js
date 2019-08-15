@@ -8,26 +8,37 @@ class LinkGroup extends Component {
     this.linkSelection = this.linkSelection.bind(this);
 
     this.state = {
-      selected: props.selected
+      selected: undefined
     };
+  }
+
+  componentDidMount() {
+    let { selected } = this.props;
+
+    if (selected) {
+      this.linkSelection(selected);
+    }
   }
 
   linkSelection(id) {
     let { selectionCallback } = this.props;
     let { selected } = this.state;
 
-    this.setState({
-      selected: id
-    });
+    if (selected !== id) {
+      this.setState({
+        selected: id
+      });
 
-    if (selectionCallback && selected !== id) {
-      selectionCallback(id);
+      if (selectionCallback) {
+        selectionCallback(id);
+      }
     }
   }
 
   render() {
     let { links } = this.props;
     let { selected } = this.state;
+
     let linkList = links.map(link => {
       return (
         <Link
@@ -51,7 +62,11 @@ LinkGroup.propTypes = {
       displayName: PropTypes.string.isRequired,
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     })
-  ).isRequired,
+  ),
   selected: PropTypes.string,
   selectionCallback: PropTypes.func
+};
+
+LinkGroup.defaultProps = {
+  links: []
 };
