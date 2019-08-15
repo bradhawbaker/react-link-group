@@ -4,6 +4,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import LinkGroup from "../src/LinkGroup";
+import "../dev/resources/linkGroupStyles.css";
 
 storiesOf("Link Group", module)
   .add("Basic Link Group", () => {
@@ -29,32 +30,6 @@ storiesOf("Link Group", module)
     return (
       <div style={{ height: "100%" }}>
         <LinkGroup links={basicLinks} />
-      </div>
-    );
-  })
-  .add("Default Selection", () => {
-    let basicLinks = [
-      {
-        id: "all",
-        displayName: "All"
-      },
-      {
-        id: "services",
-        displayName: "Services"
-      },
-      {
-        id: "operations",
-        displayName: "Operations"
-      },
-      {
-        id: "resources",
-        displayName: "Resources"
-      }
-    ];
-
-    return (
-      <div style={{ height: "100%" }}>
-        <LinkGroup links={basicLinks} selected="operations" />
       </div>
     );
   })
@@ -87,7 +62,33 @@ storiesOf("Link Group", module)
       </div>
     );
   })
-  .add("Click Link Event Handling", () => {
+  .add("Load With Default Selection", () => {
+    let basicLinks = [
+      {
+        id: "all",
+        displayName: "All"
+      },
+      {
+        id: "services",
+        displayName: "Services"
+      },
+      {
+        id: "operations",
+        displayName: "Operations"
+      },
+      {
+        id: "resources",
+        displayName: "Resources"
+      }
+    ];
+
+    return (
+      <div style={{ height: "100%" }}>
+        <LinkGroup links={basicLinks} selected="operations" />
+      </div>
+    );
+  })
+  .add("Click Event", () => {
     let basicLinks = [
       {
         id: "all",
@@ -118,6 +119,44 @@ storiesOf("Link Group", module)
       <div style={{ height: "100%" }}>
         <p>Click a link below:</p>
         <LinkGroup links={basicLinks} selectionCallback={linkSelected} />
+      </div>
+    );
+  })
+  .add("Click Event With Default Selection", () => {
+    let basicLinks = [
+      {
+        id: "all",
+        displayName: "All"
+      },
+      {
+        id: "services",
+        displayName: "Services",
+        value: 6
+      },
+      {
+        id: "operations",
+        displayName: "Operations",
+        value: 9
+      },
+      {
+        id: "resources",
+        displayName: "Resources",
+        value: 2
+      }
+    ];
+
+    function linkSelected(id) {
+      alert(`Selected link id: ${id}`);
+    }
+
+    return (
+      <div style={{ height: "100%" }}>
+        <p>Click a link below:</p>
+        <LinkGroup
+          links={basicLinks}
+          selected={"operations"}
+          selectionCallback={linkSelected}
+        />
       </div>
     );
   });

@@ -1,0 +1,31 @@
+.react-link-group {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    padding: 10px 0px;
+    width: 100%;
+    list-style-type: none;
+    color: gray
+}
+
+.react-link {
+    display: block;
+    float: left;
+    margin: 0px;
+    padding: 10px 50px;
+    cursor: pointer;
+
+    border-bottom: solid 2px darkgrey;
+}
+
+.react-link:last-child {
+    float:none;
+    overflow:hidden;
+}
+
+.react-link.selected {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    cursor: default;
+    border-bottom: solid 3px rgb(247, 65, 95);
+}
