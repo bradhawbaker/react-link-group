@@ -20,6 +20,16 @@ class LinkGroup extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    let { selected } = this.props;
+
+    if (selected !== prevProps.selected) {
+      this.setState({
+        selected: selected
+      });
+    }
+  }
+
   linkSelection(id) {
     let { selectionCallback } = this.props;
     let { selected } = this.state;
