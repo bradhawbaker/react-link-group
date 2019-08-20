@@ -24,9 +24,7 @@ class LinkGroup extends Component {
     let { selected } = this.props;
 
     if (selected !== prevProps.selected) {
-      this.setState({
-        selected: selected
-      });
+      this.linkSelection(selected);
     }
   }
 
@@ -68,7 +66,12 @@ export default LinkGroup;
 LinkGroup.propTypes = {
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: function(props, propName, componentName) {
+        const propValue = props[propName]; // the actual value of `id` prop
+        if (propValue === null) return;
+        if (typeof propValue === "string") return;
+        return new Error(`${componentName} only accepts null or string`);
+      },
       displayName: PropTypes.string.isRequired,
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     })
