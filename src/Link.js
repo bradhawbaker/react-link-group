@@ -1,17 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+import cx from "classnames";
+
+import styles from "./LinkGroup.css";
 
 const Link = props => {
-  let { id, displayName, value, selected, selectionCallback } = props;
+  const { id, displayName, value, selected, selectionCallback } = props;
   let extraData = "";
-  let linkClass = selected ? "react-link selected" : "react-link";
 
   if (value) {
     extraData = ` (${value})`;
   }
 
   return (
-    <li className={linkClass} onClick={() => selectionCallback(id)}>
+    <li
+      className={
+        selected ? cx(styles.reactLink, styles.selected) : styles.reactLink
+      }
+      onClick={() => selectionCallback(id)}
+    >
       {displayName}
       {extraData}
     </li>
@@ -21,12 +28,7 @@ const Link = props => {
 export default Link;
 
 Link.propTypes = {
-  id: function(props, propName, componentName) {
-    const propValue = props[propName]; // the actual value of `id` prop
-    if (propValue === null) return;
-    if (typeof propValue === "string") return;
-    return new Error(`${componentName} only accepts null or string`);
-  },
+  id: PropTypes.string,
   displayName: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   selected: PropTypes.bool,
