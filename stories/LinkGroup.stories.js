@@ -2,6 +2,7 @@
 
 import React from "react";
 import { storiesOf } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 
 import LinkGroup from "../src/LinkGroup";
 import "../dev/resources/linkGroupStyles.css";
@@ -111,14 +112,44 @@ storiesOf("Link Group", module)
       }
     ];
 
-    function linkSelected(id) {
-      alert(`Selected link id: ${id}`);
-    }
+    return (
+      <div style={{ height: "100%" }}>
+        <LinkGroup
+          links={basicLinks}
+          selectionCallback={action("link-selection")}
+        />
+      </div>
+    );
+  })
+  .add("Click Event With NULL Id", () => {
+    let basicLinks = [
+      {
+        id: null,
+        displayName: "All"
+      },
+      {
+        id: "services",
+        displayName: "Services",
+        value: 6
+      },
+      {
+        id: "operations",
+        displayName: "Operations",
+        value: 9
+      },
+      {
+        id: "resources",
+        displayName: "Resources",
+        value: 2
+      }
+    ];
 
     return (
       <div style={{ height: "100%" }}>
-        <p>Click a link below:</p>
-        <LinkGroup links={basicLinks} selectionCallback={linkSelected} />
+        <LinkGroup
+          links={basicLinks}
+          selectionCallback={action("link-selection")}
+        />
       </div>
     );
   })
@@ -145,17 +176,12 @@ storiesOf("Link Group", module)
       }
     ];
 
-    function linkSelected(id) {
-      alert(`Selected link id: ${id}`);
-    }
-
     return (
       <div style={{ height: "100%" }}>
-        <p>Click a link below:</p>
         <LinkGroup
           links={basicLinks}
           selected={"operations"}
-          selectionCallback={linkSelected}
+          selectionCallback={action("link-selection")}
         />
       </div>
     );

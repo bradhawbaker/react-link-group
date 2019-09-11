@@ -1,6 +1,6 @@
 {
   "name": "react-link-group",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "A ReactJS component for rendering a grouping of clickable links. Clicking a link executes a callback function, passing it the id of the selected link",
   "main": "/dist/react-link-group.bundle.js",
   "scripts": {
@@ -48,6 +48,7 @@
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.1.11",
     "@storybook/addon-knobs": "^5.1.9",
     "@storybook/react": "^5.1.9",
     "babel-eslint": "^10.0.2",
