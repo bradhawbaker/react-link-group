@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: "off" */
 // file: src/Button.js
 
 import React from "react";
@@ -5,11 +6,10 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import LinkGroup from "../src/LinkGroup";
-import "../dev/resources/linkGroupStyles.css";
 
 storiesOf("Link Group", module)
   .add("Basic Link Group", () => {
-    let basicLinks = [
+    const basicLinks = [
       {
         id: "all",
         displayName: "All"
@@ -35,7 +35,7 @@ storiesOf("Link Group", module)
     );
   })
   .add("Links With Values", () => {
-    let basicLinks = [
+    const basicLinks = [
       {
         id: "all",
         displayName: "All"
@@ -64,7 +64,7 @@ storiesOf("Link Group", module)
     );
   })
   .add("Load With Default Selection", () => {
-    let basicLinks = [
+    const basicLinks = [
       {
         id: "all",
         displayName: "All"
@@ -90,7 +90,7 @@ storiesOf("Link Group", module)
     );
   })
   .add("Click Event", () => {
-    let basicLinks = [
+    const basicLinks = [
       {
         id: "all",
         displayName: "All"
@@ -122,7 +122,7 @@ storiesOf("Link Group", module)
     );
   })
   .add("Click Event With NULL Id", () => {
-    let basicLinks = [
+    const basicLinks = [
       {
         id: null,
         displayName: "All"
@@ -154,7 +154,7 @@ storiesOf("Link Group", module)
     );
   })
   .add("Click Event With Default Selection", () => {
-    let basicLinks = [
+    const basicLinks = [
       {
         id: "all",
         displayName: "All"
