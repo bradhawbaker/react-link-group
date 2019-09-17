@@ -82,6 +82,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@css-modules-theme/react": "^2.2.0",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+
 import LinkGroup from "../../src/LinkGroup";
 import LINKS_CONFIG from "./config";
+
+import theme from "./TestTheme.css";
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +24,18 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>Non-Themed Link Group</h1>
         <LinkGroup links={LINKS_CONFIG} selectionCallback={this.selected} />
+        <p>The selected link id is: {this.state.selected}</p>
+
+        <h1>Themed Link Group</h1>
+        <LinkGroup
+          theme={theme}
+          themeCompose="merge"
+          themePrefix="linkGroup-"
+          links={LINKS_CONFIG}
+          selectionCallback={this.selected}
+        />
         <p>The selected link id is: {this.state.selected}</p>
       </div>
     );

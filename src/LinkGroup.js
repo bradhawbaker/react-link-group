@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { composeThemeFromProps } from "@css-modules-theme/react";
+
 import Link from "./Link";
 import styles from "./LinkGroup.css";
 
@@ -47,16 +49,20 @@ class LinkGroup extends Component {
   render() {
     const { links } = this.props;
     const { selected } = this.state;
+    const theme = composeThemeFromProps(styles, this.props, {
+      compose: "Replace"
+    });
 
     const linkList = links.map(link => (
       <Link
         key={link.id}
+        {...this.props}
         {...link}
         selected={link.id === selected}
         selectionCallback={this.linkSelection}
       />
     ));
-    return <ul className={styles.reactLinkGroup}>{linkList}</ul>;
+    return <ul className={theme.reactLinkGroup}>{linkList}</ul>;
   }
 }
 

@@ -1,0 +1,31 @@
+.linkGroup-reactLinkGroup {
+    padding: 10px 0px;
+    width: 100%;
+    list-style-type: none;
+    color: green;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+}
+
+.linkGroup-reactLink {
+    display: block;
+    float: left;
+    margin: 0px;
+    padding: 10px 50px;
+    cursor: pointer;
+
+    border-bottom: solid 2px greenyellow;
+}
+
+.linkGroup-reactLink:last-child {
+    float:none;
+    overflow:hidden;
+}
+
+.linkGroup-reactLink.linkGroup-selected {
+    text-decoration: none;
+    font-weight: bold;
+    color: orange;
+    cursor: default;
+    border-bottom: solid 3px pink;
+}

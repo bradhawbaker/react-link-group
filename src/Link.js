@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
+import { composeThemeFromProps } from "@css-modules-theme/react";
 
 import styles from "./LinkGroup.css";
 
@@ -12,10 +13,12 @@ const Link = props => {
     extraData = ` (${value})`;
   }
 
+  const theme = composeThemeFromProps(styles, props, { compose: "Replace" });
+
   return (
     <li
       className={
-        selected ? cx(styles.reactLink, styles.selected) : styles.reactLink
+        selected ? cx(theme.reactLink, theme.selected) : theme.reactLink
       }
       onClick={() => selectionCallback(id)}
     >
