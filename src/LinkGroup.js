@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { composeThemeFromProps } from "@css-modules-theme/react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { composeThemeFromProps } from '@css-modules-theme/react';
 
-import Link from "./Link";
-import styles from "./LinkGroup.css";
+import Link from './Link';
+import styles from './LinkGroup.css';
 
 class LinkGroup extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class LinkGroup extends Component {
     this.linkSelection = this.linkSelection.bind(this);
 
     this.state = {
-      selected: undefined
+      selected: undefined,
     };
   }
 
@@ -37,7 +37,7 @@ class LinkGroup extends Component {
 
     if (selected !== id) {
       this.setState({
-        selected: id
+        selected: id,
       });
 
       if (selectionCallback) {
@@ -50,10 +50,10 @@ class LinkGroup extends Component {
     const { links } = this.props;
     const { selected } = this.state;
     const theme = composeThemeFromProps(styles, this.props, {
-      compose: "Replace"
+      compose: 'Replace',
     });
 
-    const linkList = links.map(link => (
+    const linkList = links.map((link) => (
       <Link
         key={link.id}
         {...this.props}
@@ -73,13 +73,13 @@ LinkGroup.propTypes = {
     PropTypes.shape({
       id: PropTypes.string,
       displayName: PropTypes.string.isRequired,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ),
   selected: PropTypes.string,
-  selectionCallback: PropTypes.func
+  selectionCallback: PropTypes.func,
 };
 
 LinkGroup.defaultProps = {
-  links: []
+  links: [],
 };
