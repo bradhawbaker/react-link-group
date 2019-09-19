@@ -1,19 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
-import { composeThemeFromProps } from "@css-modules-theme/react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import { composeThemeFromProps } from '@css-modules-theme/react';
 
-import styles from "./LinkGroup.css";
+import styles from './LinkGroup.css';
 
-const Link = props => {
+const Link = (props) => {
   const { id, displayName, value, selected, selectionCallback } = props;
-  let extraData = "";
+  let extraData = '';
 
   if (value) {
     extraData = ` (${value})`;
   }
 
-  const theme = composeThemeFromProps(styles, props, { compose: "Replace" });
+  const theme = composeThemeFromProps(styles, props, { compose: 'Replace' });
 
   return (
     <li
@@ -35,9 +35,9 @@ Link.propTypes = {
   displayName: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   selected: PropTypes.bool,
-  selectionCallback: PropTypes.func.isRequired
+  selectionCallback: PropTypes.func.isRequired,
 };
 
 Link.defaultPrps = {
-  selected: false
+  selected: false,
 };
