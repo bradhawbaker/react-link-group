@@ -74,7 +74,7 @@ LinkGroup.propTypes = {
       id: PropTypes.string,
       displayName: PropTypes.string.isRequired,
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    })
+    }),
   ),
   selected: PropTypes.string,
   selectionCallback: PropTypes.func,
