@@ -1,6 +1,6 @@
 {
   "name": "react-link-group",
-  "version": "2.0.0-cssModules",
+  "version": "2.0.0",
   "description": "A ReactJS component for rendering a grouping of clickable links. Clicking a link executes a callback function, passing it the id of the selected link",
   "main": "/dist/react-link-group.bundle.js",
   "scripts": {

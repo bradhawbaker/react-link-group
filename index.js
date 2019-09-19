@@ -1,3 +1,3 @@
-import LinkGroup from "./src/LinkGroup";
+import LinkGroup from './src/LinkGroup';
 
 export default LinkGroup;
