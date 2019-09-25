@@ -1,0 +1,13 @@
+.linkGroup-reactLinkGroup {
+    color: green;
+}
+
+.linkGroup-reactLink {
+    border-bottom: solid 2px greenyellow;
+}
+
+.linkGroup-reactLink.linkGroup-selected {
+    color: orange;
+    border-bottom: solid 3px pink;
+    background-color: gray;
+}

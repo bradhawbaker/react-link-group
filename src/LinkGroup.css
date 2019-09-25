@@ -1,13 +1,13 @@
-.react-link-group {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 14px;
+.reactLinkGroup {
     padding: 10px 0px;
     width: 100%;
     list-style-type: none;
-    color: gray
+    color: gray;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
 }
 
-.react-link {
+.reactLink {
     display: block;
     float: left;
     margin: 0px;
@@ -17,12 +17,12 @@
     border-bottom: solid 2px darkgrey;
 }
 
-.react-link:last-child {
+.reactLink:last-child {
     float:none;
     overflow:hidden;
 }
 
-.react-link.selected {
+.reactLink.selected {
     text-decoration: none;
     font-weight: bold;
     color: black;

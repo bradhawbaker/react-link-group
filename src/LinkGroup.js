@@ -1,6 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Link from "./Link";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { composeThemeFromProps } from '@css-modules-theme/react';
+
+import Link from './Link';
+import styles from './LinkGroup.css';
 
 class LinkGroup extends Component {
   constructor(props) {
@@ -8,12 +11,12 @@ class LinkGroup extends Component {
     this.linkSelection = this.linkSelection.bind(this);
 
     this.state = {
-      selected: undefined
+      selected: undefined,
     };
   }
 
   componentDidMount() {
-    let { selected } = this.props;
+    const { selected } = this.props;
 
     if (selected) {
       this.linkSelection(selected);
@@ -21,7 +24,7 @@ class LinkGroup extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    let { selected } = this.props;
+    const { selected } = this.props;
 
     if (selected !== prevProps.selected) {
       this.linkSelection(selected);
@@ -29,12 +32,12 @@ class LinkGroup extends Component {
   }
 
   linkSelection(id) {
-    let { selectionCallback } = this.props;
-    let { selected } = this.state;
+    const { selectionCallback } = this.props;
+    const { selected } = this.state;
 
     if (selected !== id) {
       this.setState({
-        selected: id
+        selected: id,
       });
 
       if (selectionCallback) {
@@ -44,20 +47,22 @@ class LinkGroup extends Component {
   }
 
   render() {
-    let { links } = this.props;
-    let { selected } = this.state;
-
-    let linkList = links.map(link => {
-      return (
-        <Link
-          key={link.id}
-          {...link}
-          selected={link.id === selected}
-          selectionCallback={this.linkSelection}
-        />
-      );
+    const { links } = this.props;
+    const { selected } = this.state;
+    const theme = composeThemeFromProps(styles, this.props, {
+      compose: 'Replace',
     });
-    return <ul className="react-link-group">{linkList}</ul>;
+
+    const linkList = links.map((link) => (
+      <Link
+        key={link.id}
+        {...this.props}
+        {...link}
+        selected={link.id === selected}
+        selectionCallback={this.linkSelection}
+      />
+    ));
+    return <ul className={theme.reactLinkGroup}>{linkList}</ul>;
   }
 }
 
@@ -66,20 +71,15 @@ export default LinkGroup;
 LinkGroup.propTypes = {
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      id: function(props, propName, componentName) {
-        const propValue = props[propName]; // the actual value of `id` prop
-        if (propValue === null) return;
-        if (typeof propValue === "string") return;
-        return new Error(`${componentName} only accepts null or string`);
-      },
+      id: PropTypes.string,
       displayName: PropTypes.string.isRequired,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    })
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    }),
   ),
   selected: PropTypes.string,
-  selectionCallback: PropTypes.func
+  selectionCallback: PropTypes.func,
 };
 
 LinkGroup.defaultProps = {
-  links: []
+  links: [],
 };

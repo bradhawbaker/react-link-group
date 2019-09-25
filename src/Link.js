@@ -1,17 +1,27 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import { composeThemeFromProps } from '@css-modules-theme/react';
 
-const Link = props => {
-  let { id, displayName, value, selected, selectionCallback } = props;
-  let extraData = "";
-  let linkClass = selected ? "react-link selected" : "react-link";
+import styles from './LinkGroup.css';
+
+const Link = (props) => {
+  const { id, displayName, value, selected, selectionCallback } = props;
+  let extraData = '';
 
   if (value) {
     extraData = ` (${value})`;
   }
 
+  const theme = composeThemeFromProps(styles, props, { compose: 'Replace' });
+
   return (
-    <li className={linkClass} onClick={() => selectionCallback(id)}>
+    <li
+      className={
+        selected ? cx(theme.reactLink, theme.selected) : theme.reactLink
+      }
+      onClick={() => selectionCallback(id)}
+    >
       {displayName}
       {extraData}
     </li>
@@ -21,18 +31,13 @@ const Link = props => {
 export default Link;
 
 Link.propTypes = {
-  id: function(props, propName, componentName) {
-    const propValue = props[propName]; // the actual value of `id` prop
-    if (propValue === null) return;
-    if (typeof propValue === "string") return;
-    return new Error(`${componentName} only accepts null or string`);
-  },
+  id: PropTypes.string,
   displayName: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   selected: PropTypes.bool,
-  selectionCallback: PropTypes.func.isRequired
+  selectionCallback: PropTypes.func.isRequired,
 };
 
 Link.defaultPrps = {
-  selected: false
+  selected: false,
 };
