@@ -52,7 +52,7 @@ class LinkGroup extends Component {
     const theme = composeThemeFromProps(styles, this.props, {
       compose: 'Replace',
     });
-console.log(selected)
+
     const linkList = links.map((link, i) => (
       <Link
         key={link.id}
