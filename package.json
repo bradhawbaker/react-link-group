@@ -1,6 +1,6 @@
 {
   "name": "react-link-group",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A ReactJS component for rendering a grouping of clickable links. Clicking a link executes a callback function, passing it the id of the selected link",
   "main": "/dist/react-link-group.bundle.js",
   "scripts": {
@@ -64,7 +64,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.14.2",
     "html-webpack-plugin": "^3.2.0",
-    "lint-staged": "^9.2.0",
+    "lint-staged": "^9.4.2",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "pre-commit": "^1.2.2",
