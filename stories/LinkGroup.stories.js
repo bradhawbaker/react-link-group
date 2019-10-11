@@ -185,4 +185,36 @@ storiesOf("Link Group", module)
         />
       </div>
     );
-  });
+  }).add("Auto Select On", () => {
+  const basicLinks = [
+    {
+      id: "all",
+      displayName: "All"
+    },
+    {
+      id: "services",
+      displayName: "Services",
+      value: 6
+    },
+    {
+      id: "operations",
+      displayName: "Operations",
+      value: 9
+    },
+    {
+      id: "resources",
+      displayName: "Resources",
+      value: 2
+    }
+  ];
+
+  return (
+    <div style={{ height: "100%" }}>
+      <LinkGroup
+        links={basicLinks}
+        autoSelect= {true}
+        selectionCallback={action("link-selection")}
+      />
+    </div>
+  );
+});

@@ -47,18 +47,18 @@ class LinkGroup extends Component {
   }
 
   render() {
-    const { links } = this.props;
+    const { links, autoSelect } = this.props;
     const { selected } = this.state;
     const theme = composeThemeFromProps(styles, this.props, {
       compose: 'Replace',
     });
 
-    const linkList = links.map((link) => (
+    const linkList = links.map((link, i) => (
       <Link
         key={link.id}
         {...this.props}
         {...link}
-        selected={link.id === selected}
+        selected={link.id === selected || (selected === undefined && i === 0 && autoSelect)}
         selectionCallback={this.linkSelection}
       />
     ));
@@ -78,6 +78,7 @@ LinkGroup.propTypes = {
   ),
   selected: PropTypes.string,
   selectionCallback: PropTypes.func,
+  autoSelect: PropTypes.boolean,
 };
 
 LinkGroup.defaultProps = {
