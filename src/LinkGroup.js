@@ -58,7 +58,10 @@ class LinkGroup extends Component {
         key={link.id}
         {...this.props}
         {...link}
-        selected={link.id === selected || (selected === undefined && i === 0 && autoSelect)}
+        selected={
+          link.id === selected ||
+          (selected === undefined && i === 0 && autoSelect)
+        }
         selectionCallback={this.linkSelection}
       />
     ));
@@ -78,7 +81,7 @@ LinkGroup.propTypes = {
   ),
   selected: PropTypes.string,
   selectionCallback: PropTypes.func,
-  autoSelect: PropTypes.boolean,
+  autoSelect: PropTypes.bool,
 };
 
 LinkGroup.defaultProps = {
