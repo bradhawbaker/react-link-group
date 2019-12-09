@@ -1,41 +1,58 @@
 {
   "name": "react-link-group",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A ReactJS component for rendering a grouping of clickable links. Clicking a link executes a callback function, passing it the id of the selected link",
-  "main": "/dist/react-link-group.bundle.js",
-  "scripts": {
-    "pre-commit": "lint-staged",
-    "start": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
-    "build": "webpack --config ./webpack.prod.config.js --mode production",
-    "storybook": "start-storybook"
+  "keywords": [
+    "Group Links",
+    "Links",
+    "React",
+    "react",
+    "react-component",
+    "reactjs"
+  ],
+  "homepage": "https://github.com/Tri4Ty/react-link-group#readme",
+  "bugs": {
+    "url": "https://github.com/Tri4Ty/react-link-group/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tri4Ty/react-link-group.git"
   },
-  "keywords": [
-    "React",
-    "Links",
-    "Group Links"
-  ],
-  "author": "Tri4Ty",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Tri4Ty/react-link-group/issues"
-  },
-  "homepage": "https://github.com/Tri4Ty/react-link-group#readme",
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      "babel-plugin-styled-components"
-    ]
+  "author": "Tri4Ty",
+  "files": [
+    "*.md",
+    "dev",
+    "es6",
+    "lib",
+    "umd",
+    "src",
+    "res"
+  ],
+  "main": "lib/index",
+  "module": "es6/index",
+  "jsnext:main": "es6/index",
+  "scripts": {
+    "analyse": "cross-env NODE_ENV=analyse webpack src/index.js -o umd/configurable-interactive-layout.js",
+    "build": "npm run build-cjs && npm run build-es6 && rimraf umd && npm run build-umd && npm run build-min",
+    "build-cjs": "rimraf lib && cross-env NODE_ENV=commonjs babel ./src -d lib --copy-files --keep-file-extension",
+    "build-es6": "rimraf es6 && cross-env NODE_ENV=es6 babel ./src -d es6 --copy-files --keep-file-extension",
+    "build-min": "cross-env NODE_ENV=production webpack src/index.js -o umd/configurable-interactive-layout.min.js",
+    "build-umd": "cross-env NODE_ENV=development webpack src/index.js -o umd/configurable-interactive-layout.js",
+    "lint": "eslint src/ --ext .jsx,.js",
+    "lint-dev": "eslint dev/ --ext .jsx,.js",
+    "lint-dev-fix": "npm run lint-dev -- --fix",
+    "lint-fix": "npm run lint -- --fix",
+    "lint-staged": "lint-staged",
+    "sort-package-json": "sort-package-json && git add package.json",
+    "start": "webpack-dev-server --progress --inline --config dev/webpack.config.js",
+    "storybook": "start-storybook",
+    "test": "jest",
+    "test:dev": "jest --watch"
   },
   "pre-commit": [
-    "pre-commit"
+    "sort-package-json",
+    "lint-staged"
   ],
   "lint-staged": {
     "*.js": [
@@ -43,19 +60,36 @@
       "git add"
     ]
   },
+  "dependencies": {
+    "@css-modules-theme/react": "^2.2.0",
+    "classnames": "^2.2.6"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.6.3",
     "@storybook/addon-actions": "^5.1.11",
     "@storybook/addon-knobs": "^5.1.11",
     "@storybook/react": "^5.1.11",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-istanbul": "^5.0.0",
+    "babel-plugin-lodash": "^3.3.0",
     "babel-plugin-styled-components": "^1.10.6",
+    "babel-preset-airbnb": "^2.6.0",
     "circular-dependency-plugin": "^5.2.0",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^5.2.1",
     "css-loader": "^3.2.0",
     "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -63,7 +97,12 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.14.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
     "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^3.4.2",
+    "jest": "^22.0.4",
+    "jest-enzyme": "^4.0.2",
     "lint-staged": "^9.2.0",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -73,17 +112,18 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.11.1",
+    "rimraf": "^2.7.1",
     "sass-loader": "^7.1.0",
+    "sort-package-json": "^1.23.1",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
+    "svg-fill-loader": "0.0.8",
+    "url-loader": "^0.6.2",
     "webpack": "^4.35.0",
+    "webpack-bundle-analyzer": "^3.5.2",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
-  },
-  "dependencies": {
-    "@css-modules-theme/react": "^2.2.0",
-    "classnames": "^2.2.6"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
