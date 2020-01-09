@@ -6,6 +6,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import LinkGroup from "../src/LinkGroup";
+import linkGroupTheme from "./TestTheme.css"
 
 storiesOf("Link Group", module)
   .add("Basic Link Group", () => {
@@ -215,6 +216,68 @@ storiesOf("Link Group", module)
         autoSelect= {true}
         selectionCallback={action("link-selection")}
       />
+    </div>
+  );
+}) .add("Custom Style", () => {
+  const basicLinks = [
+    {
+      id: "all",
+      displayName: "All"
+    },
+    {
+      id: "services",
+      displayName: "Services"
+    },
+    {
+      id: "operations",
+      displayName: "Operations"
+    },
+    {
+      id: "resources",
+      displayName: "Resources"
+    }
+  ];
+
+
+  return (
+    <div style={{ height: "100%" }}>
+      <LinkGroup
+       links={basicLinks}
+        theme={linkGroupTheme}
+        themeCompose= "merge"
+        themePrefix= "customLinkGroup-"
+       />
+    </div>
+  );
+}) .add("Vertical Custom Style", () => {
+  const basicLinks = [
+    {
+      id: "all",
+      displayName: "All"
+    },
+    {
+      id: "services",
+      displayName: "Services"
+    },
+    {
+      id: "operations",
+      displayName: "Operations"
+    },
+    {
+      id: "resources",
+      displayName: "Resources"
+    }
+  ];
+
+
+  return (
+    <div style={{ width: "200px" }}>
+      <LinkGroup
+       links={basicLinks}
+        theme={linkGroupTheme}
+        themeCompose= "merge"
+        themePrefix= "verticalLinkGroup-"
+       />
     </div>
   );
 });

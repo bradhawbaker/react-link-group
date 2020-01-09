@@ -1,0 +1,52 @@
+
+
+
+.linkGroup-reactLinkGroup {
+    color: green;
+}
+
+.linkGroup-reactLink {
+    border-bottom: solid 2px greenyellow;
+}
+
+.linkGroup-reactLink.linkGroup-selected {
+    color: orange;
+    border-bottom: solid 3px pink;
+    background-color: gray;
+}
+
+.customLinkGroup-reactLinkGroup {
+    color: pink;
+}
+
+.customLinkGroup-reactLink {
+    border-bottom: solid 2px blue;
+}
+
+.customLinkGroup-reactLink.customLinkGroup-selected {
+    color: blue;
+    border-bottom: solid 3px pink;
+    background-color: lime;
+}
+
+.verticalLinkGroup-reactLinkGroup {
+    color: rgb(122, 120, 120); 
+    background-color: rgb(237, 241, 237);
+    padding: 00px 0px;
+       
+}
+
+.verticalLinkGroup-reactLink {
+    border-bottom: solid 1px rgb(179, 179, 189);
+    float: none;
+    padding: 10px 30px;
+}
+
+.verticalLinkGroup-reactLink.verticalLinkGroup-selected {
+    color: rgb(255, 255, 255);
+    border-bottom: solid 1px rgb(179, 179, 189);
+    background-color: rgb(107, 110, 107);
+    
+}
+
+
